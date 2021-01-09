@@ -1,0 +1,17 @@
+.CounterPanel {
+ border: 2px solid #0066FF;
+ border-radius: 5px;
+ margin: 12px auto;
+ padding: 12px;
+ width: 75vw
+}
+
+.Counter {
+  color: #0066FF;
+  font-size: 1.2em;
+  padding: 6px;
+}
+
+.CounterValue {
+  font-weight: bold;
+}
