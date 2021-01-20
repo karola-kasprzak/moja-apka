@@ -1,4 +1,9 @@
 .App {
   text-align: center;
-  padding-top: 5vh;
+  /* padding-top: 5vh; */
+}
+
+.Toolbar {
+  justify-content: space-between;
+  background-color: #003399;
 }

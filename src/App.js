@@ -9,6 +9,9 @@ import {
     DialogContent,
     DialogContentText,
     DialogTitle,
+    Toolbar,
+    IconButton,
+    Typography,
 } from "@material-ui/core";
 
 import "./App.css";
@@ -46,15 +49,23 @@ class App extends Component {
 
         return (
             <div className="App">
-                <AppBar> Menu</AppBar>
+                <div className={root}>
+                    <AppBar position="static">
+                        <Toolbar className="Toolbar">
+                            <Typography variant="h6">
+                                React Exercises
+                            </Typography>
 
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={this.handleClickOpen}
-                >
-                    {dialog}
-                </Button>
+                            <Button
+                                variant="outlined"
+                                color="inherit"
+                                onClick={this.handleClickOpen}
+                            >
+                                {dialog}
+                            </Button>
+                        </Toolbar>
+                    </AppBar>
+                </div>
 
                 <Dialog
                     open={this.state.open}
