@@ -56,17 +56,10 @@ class App extends Component {
                     <div className={root}>
                         <AppBar position="static">
                             <Toolbar className="Toolbar">
-                                <Typography variant="h6">
+                                <Typography variant="h5">
                                     React Exercises
                                 </Typography>
-                                <ul>
-                                    <li>
-                                        <Link to="/">Name List</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/counter">Counter</Link>
-                                    </li>
-                                </ul>
+
                                 <Button
                                     variant="outlined"
                                     color="inherit"
@@ -74,6 +67,15 @@ class App extends Component {
                                 >
                                     {dialog}
                                 </Button>
+                            </Toolbar>
+                            <Toolbar className="Toolbar2">
+                                <Link className="Toolbar2-link" to="/">
+                                    Name List
+                                </Link>
+
+                                <Link className="Toolbar2-link" to="/counter">
+                                    Counter
+                                </Link>
                             </Toolbar>
                         </AppBar>
                     </div>

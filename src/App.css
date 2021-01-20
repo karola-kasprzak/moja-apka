@@ -7,3 +7,9 @@
   justify-content: space-between;
   background-color: #003399;
 }
+
+.Toolbar2-link {
+  color: white;
+  text-decoration: none;
+  padding-right: 3rem;
+}
