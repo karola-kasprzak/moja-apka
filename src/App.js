@@ -69,13 +69,14 @@ class App extends Component {
                                 </Button>
                             </Toolbar>
                             <Toolbar className="Toolbar2">
+                                <p className="Toolbar2-link">Home</p>
                                 <Link className="Toolbar2-link" to="/">
                                     Name List
                                 </Link>
-
                                 <Link className="Toolbar2-link" to="/counter">
                                     Counter
                                 </Link>
+                                <p className="Toolbar2-link">Posts</p>
                             </Toolbar>
                         </AppBar>
                     </div>
