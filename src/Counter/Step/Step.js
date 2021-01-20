@@ -15,10 +15,11 @@ class Step extends Component {
     render() {
         return (
             <div className="step-panel">
+                <label htmlFor="inputStep">Wielkość kroku: </label>
                 <input
                     type="number"
-                    name=""
-                    id=""
+                    name="inputStep"
+                    id="inputStep"
                     onChange={this.inputChangeHandler}
                 />
                 <button onClick={() => this.props.change(this.state.stepVal)}>

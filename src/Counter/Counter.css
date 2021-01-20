@@ -35,3 +35,7 @@ input:focus {
   border: 2px solid #0066FF;
   outline: none
 }
+
+#inputStep {
+  width: 4em;
+}
