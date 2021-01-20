@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ButtonPanel from "./ButtonPanel/ButtonPanel";
+import Step from "./Step/Step";
 import "./Counter.css";
 
 class Counter extends Component {
@@ -11,6 +12,7 @@ class Counter extends Component {
         }
         this.state = {
             counterValue: initValue,
+            step: 5,
         };
     }
 
@@ -31,11 +33,16 @@ class Counter extends Component {
             counterValue: initValue,
         });
     };
+
+    changeStep = (num) => {
+        this.setState({ step: num });
+    };
+
     render() {
         return (
             <div className="CounterPanel">
                 <div className="Counter">
-                    Licznik:
+                    Licznik:&nbsp;
                     <span className="CounterValue">
                         {this.state.counterValue}
                     </span>
@@ -45,6 +52,8 @@ class Counter extends Component {
                     changeCounterValue={this.changeValue}
                     resetCounterValue={this.resetCounter}
                 />
+
+                <Step step={this.state.step} change={this.changeStep} />
             </div>
         );
     }

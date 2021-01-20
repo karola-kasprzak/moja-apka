@@ -6,6 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+
 import "./App.css";
 import Counter from "./Counter/Counter";
 import Name from "./Name/Name";
@@ -15,7 +16,7 @@ class App extends Component {
         super(props);
         this.state = {
             open: false,
-            dialog: "Hello Word",
+            dialog: "Subscribe",
             isSubscribed: false,
             contentText:
                 "To subscribe to this website, please enter your email address here. We will send updates occasionally.",
@@ -38,15 +39,9 @@ class App extends Component {
         const contentText = !this.state.isSubscribed
             ? this.state.contentText
             : "You are subscribed";
-        // const people = this.state.people.map((item, index) => {
-        //     return <li key={index}>{index + 1 + " " + item}</li>;
-        // });
+
         return (
             <div className="App">
-                {/* <ul style={{ listStyleType: "none", textAlign: "left" }}>
-                    {people}
-                </ul> */}
-
                 <Button
                     variant="outlined"
                     color="primary"
@@ -54,7 +49,7 @@ class App extends Component {
                 >
                     {dialog}
                 </Button>
-                {/* <SimpleSelect /> */}
+
                 <Dialog
                     open={this.state.open}
                     aria-labelledby="form-dialog-title"
