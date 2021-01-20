@@ -15,6 +15,9 @@ import {
 } from "@material-ui/core";
 
 import "./App.css";
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import Counter from "./Counter/Counter";
 import Name from "./Name/Name";
 
@@ -49,57 +52,76 @@ class App extends Component {
 
         return (
             <div className="App">
-                <div className={root}>
-                    <AppBar position="static">
-                        <Toolbar className="Toolbar">
-                            <Typography variant="h6">
-                                React Exercises
-                            </Typography>
+                <Router>
+                    <div className={root}>
+                        <AppBar position="static">
+                            <Toolbar className="Toolbar">
+                                <Typography variant="h6">
+                                    React Exercises
+                                </Typography>
+                                <ul>
+                                    <li>
+                                        <Link to="/">Name List</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/counter">Counter</Link>
+                                    </li>
+                                </ul>
+                                <Button
+                                    variant="outlined"
+                                    color="inherit"
+                                    onClick={this.handleClickOpen}
+                                >
+                                    {dialog}
+                                </Button>
+                            </Toolbar>
+                        </AppBar>
+                    </div>
 
+                    <Dialog
+                        open={this.state.open}
+                        aria-labelledby="form-dialog-title"
+                    >
+                        <DialogTitle id="form-dialog-title">
+                            Subscribe
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="subText">
+                                {contentText}
+                            </DialogContentText>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Email Address"
+                                type="email"
+                                fullWidth
+                            />
+                        </DialogContent>
+                        <DialogActions>
                             <Button
-                                variant="outlined"
-                                color="inherit"
+                                color="primary"
                                 onClick={this.handleClickOpen}
                             >
-                                {dialog}
+                                Cancel
                             </Button>
-                        </Toolbar>
-                    </AppBar>
-                </div>
+                            <Button
+                                color="primary"
+                                onClick={this.handleSubstribeText}
+                            >
+                                Subscribe
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
 
-                <Dialog
-                    open={this.state.open}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="subText">
-                            {contentText}
-                        </DialogContentText>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="name"
-                            label="Email Address"
-                            type="email"
-                            fullWidth
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button color="primary" onClick={this.handleClickOpen}>
-                            Cancel
-                        </Button>
-                        <Button
-                            color="primary"
-                            onClick={this.handleSubstribeText}
-                        >
-                            Subscribe
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-
-                <Counter initValue="108" />
-                <Name />
+                    <Route exact path="/" component={Name} />
+                    <Route
+                        path="/counter"
+                        render={(props) => (
+                            <Counter {...props} initValue={108} />
+                        )}
+                    />
+                </Router>
             </div>
         );
     }
