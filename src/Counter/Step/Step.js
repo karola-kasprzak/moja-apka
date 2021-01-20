@@ -1,30 +1,28 @@
 import React, { Component } from "react";
 
 class Step extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         stepValue: props.step,
-    //     };
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            stepVal: props.step,
+        };
+    }
+
+    inputChangeHandler = (event) => {
+        this.setState({ stepVal: event.target.value });
+    };
 
     render() {
-        let stepValue = this.props.step;
-        const inputChangeHandler = (event) => {
-            return (stepValue = event.target.value);
-        };
-
-        console.log(stepValue);
         return (
             <div className="step-panel">
                 <input
                     type="number"
                     name=""
                     id=""
-                    onChange={inputChangeHandler}
+                    onChange={this.inputChangeHandler}
                 />
-                <button onClick={() => this.props.change(3)}>
-                    Add {stepValue}
+                <button onClick={() => this.props.change(this.state.stepVal)}>
+                    Add {this.state.stepVal}
                 </button>
             </div>
         );
