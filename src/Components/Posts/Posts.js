@@ -15,15 +15,8 @@ class Posts extends Component {
         axios
             .get("https://jsonplaceholder.typicode.com/posts")
             .then((response) => {
-                const posts = response.data.slice(0, 10);
-                const updatedPosts = posts.map((post) => {
-                    return {
-                        ...post,
-                        author: "Unknown",
-                    };
-                });
                 this.setState({
-                    posts: updatedPosts,
+                    posts: response.data.slice(0, 12),
                 });
             })
             .catch((err) => console.log(err));
@@ -39,16 +32,16 @@ class Posts extends Component {
                 <Post
                     key={post.id}
                     title={post.title}
-                    author={post.author}
+                    author={post.userId}
                     body={post.body}
                     clicked={() => this.postClickedHandler(post.id)}
                 />
             );
         });
         return (
-            <div>
-                <section className="Posts-Container">{posts}</section>
-                <section>
+            <div className="Posts-Container">
+                <section className="Posts-All">{posts}</section>
+                <section className="Posts-FullPost">
                     <FullPost id={this.state.selectedPostId} />
                 </section>
             </div>

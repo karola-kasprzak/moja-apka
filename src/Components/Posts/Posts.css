@@ -1,6 +1,23 @@
 .Posts-Container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column no-wrap;
     justify-content: center;
     margin: auto;
+}
+
+.Posts-All {
+  flex-basis: 55%;  
+  flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    /* margin: auto; */
+}
+
+.Posts-FullPost {
+  flex-basis: auto;
+  width: 45vw;
+  flex-grow: 0;
+  justify-content: left;
+  margin-right: 12px;
 }

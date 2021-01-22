@@ -1,9 +1,19 @@
 .FullPost {
-    width: 80%;
-    margin: 20px auto;
-    border: 1px solid #eee;
+    width: 100%;
+    min-height: 324px;
+    margin: 12px 0;
+    padding: 12px;
+    box-sizing: border-box;
+
+    border: 2px solid #003399;
+    border-radius: 5px;
     box-shadow: 0 2px 3px #ccc;
+    
     text-align: center;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
 }
 
 .Edit {

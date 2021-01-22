@@ -31,21 +31,26 @@ class FullPost extends Component {
             .delete(
                 `https://jsonplaceholder.typicode.com/posts/${this.props.id}`
             )
-            .then((response) => {
-                console.log(response);
-            });
+            // .then((response) => {
+            //     console.log(response);
+            // })
+            .then((response) => alert(response));
     }
 
     render() {
-        let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
+        let post = <p className="FullPost">Select a post</p>;
+
         if (this.props.id) {
-            post = <p style={{ textAlign: "center" }}>Loading...</p>;
+            post = <p className="FullPost">Loading...</p>;
         }
         if (this.state.loadedPost) {
             post = (
                 <div className="FullPost">
                     <h1>{this.state.loadedPost.title}</h1>
                     <p>{this.state.loadedPost.body}</p>
+                    <p className="Author">
+                        User ID: {this.state.loadedPost.userId}
+                    </p>
                     <div className="Edit">
                         <button
                             onClick={() => this.deletePostHandler}
