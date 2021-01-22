@@ -1,0 +1,15 @@
+.HomeContainer {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../Images/julian-steenbergen-_hCMJzL3lMo-unsplash.jpg);
+  background-color: rgb(204, 210, 211);
+  background-blend-mode: screen;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+
+.Home-article {
+  padding-top: 52px;
+  width: 75vw;
+  margin: 0 auto;
+}

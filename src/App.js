@@ -10,7 +10,6 @@ import {
     DialogContentText,
     DialogTitle,
     Toolbar,
-    IconButton,
     Typography,
 } from "@material-ui/core";
 
@@ -18,8 +17,9 @@ import "./App.css";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Counter from "./Counter/Counter";
-import Name from "./Name/Name";
+import Home from "./Components/Home/Home";
+import Counter from "./Components/Counter/Counter";
+import Name from "./Components/Name/Name";
 
 class App extends Component {
     constructor(props) {
@@ -69,8 +69,10 @@ class App extends Component {
                                 </Button>
                             </Toolbar>
                             <Toolbar className="Toolbar2">
-                                <p className="Toolbar2-link">Home</p>
                                 <Link className="Toolbar2-link" to="/">
+                                    Home
+                                </Link>
+                                <Link className="Toolbar2-link" to="/names">
                                     Name List
                                 </Link>
                                 <Link className="Toolbar2-link" to="/counter">
@@ -117,7 +119,8 @@ class App extends Component {
                         </DialogActions>
                     </Dialog>
 
-                    <Route exact path="/" component={Name} />
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/names" component={Name} />
                     <Route
                         path="/counter"
                         render={(props) => (
