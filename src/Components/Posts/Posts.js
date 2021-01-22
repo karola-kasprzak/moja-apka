@@ -26,6 +26,13 @@ class Posts extends Component {
         this.setState({ selectedPostId: id });
     };
 
+    deletePostHandler(id) {
+        console.log(id);
+        // let newPosts = this.state.posts.filter((item) => item.id != id);
+        // console.log(newPosts);
+        // this.setState({ posts: newPosts });
+    }
+
     render() {
         const posts = this.state.posts.map((post) => {
             return (
@@ -42,7 +49,10 @@ class Posts extends Component {
             <div className="Posts-Container">
                 <section className="Posts-All">{posts}</section>
                 <section className="Posts-FullPost">
-                    <FullPost id={this.state.selectedPostId} />
+                    <FullPost
+                        id={this.state.selectedPostId}
+                        deleted={this.deletePostHandler}
+                    />
                 </section>
             </div>
         );
