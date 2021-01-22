@@ -28,13 +28,15 @@ function Home() {
     return (
         <div className={"HomeContainer " + filterColor + animation}>
             <article className="Home-article">
-                <h1>Lorem, ipsum dolor.</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Laudantium cum consequatur tempora itaque? Temporibus
-                    explicabo tempore accusamus aut! Ducimus, provident?
-                </p>
-                <button onClick={changeFilterColor}>Change Background</button>
+                <div>
+                    <h1>Lorem, ipsum dolor.</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Laudantium cum consequatur tempora itaque? Temporibus
+                        explicabo tempore accusamus aut! Ducimus, provident?
+                    </p>
+                    <button onClick={changeFilterColor}>Change Color</button>
+                </div>
             </article>
         </div>
     );

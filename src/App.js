@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Counter from "./Components/Counter/Counter";
 import Name from "./Components/Name/Name";
+import Posts from "./Components/Posts/Posts";
 
 class App extends Component {
     constructor(props) {
@@ -78,7 +79,9 @@ class App extends Component {
                                 <Link className="Toolbar2-link" to="/counter">
                                     Counter
                                 </Link>
-                                <p className="Toolbar2-link">Posts</p>
+                                <Link className="Toolbar2-link" to="/posts">
+                                    Posts
+                                </Link>
                             </Toolbar>
                         </AppBar>
                     </div>
@@ -127,6 +130,7 @@ class App extends Component {
                             <Counter {...props} initValue={108} />
                         )}
                     />
+                    <Route exact path="/posts" component={Posts} />
                 </Router>
             </div>
         );
