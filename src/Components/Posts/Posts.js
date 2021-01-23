@@ -37,7 +37,7 @@ class Posts extends Component {
     };
 
     deletePostHandler = (id) => {
-        let newPosts = this.state.posts.filter((item) => item.id != id);
+        let newPosts = this.state.posts.filter((item) => item.id !== id);
         console.log(newPosts);
         this.setState({ posts: newPosts });
     };

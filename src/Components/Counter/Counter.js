@@ -35,7 +35,7 @@ class Counter extends Component {
     };
 
     changeStep = (num) => {
-        num = parseInt(num);
+        num = parseInt(num, 10);
         this.setState((prevValue) => {
             return {
                 counterValue: prevValue.counterValue + num,
