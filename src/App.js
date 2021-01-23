@@ -21,6 +21,7 @@ import Home from "./Components/Home/Home";
 import Counter from "./Components/Counter/Counter";
 import Name from "./Components/Name/Name";
 import Posts from "./Components/Posts/Posts";
+import Crypto from "./Components/Crypto/Crypto";
 
 class App extends Component {
     constructor(props) {
@@ -82,6 +83,9 @@ class App extends Component {
                                 <Link className="Toolbar2-link" to="/posts">
                                     Posts
                                 </Link>
+                                <Link className="Toolbar2-link" to="/crypto">
+                                    Crypto
+                                </Link>
                             </Toolbar>
                         </AppBar>
                     </div>
@@ -131,6 +135,7 @@ class App extends Component {
                         )}
                     />
                     <Route exact path="/posts" component={Posts} />
+                    <Route exact path="/crypto" component={Crypto} />
                 </Router>
             </div>
         );
