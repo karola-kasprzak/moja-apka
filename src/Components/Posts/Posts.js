@@ -36,12 +36,12 @@ class Posts extends Component {
         this.setState({ selectedPostId: id });
     };
 
-    deletePostHandler(id) {
+    deletePostHandler = (id) => {
         console.log(id);
         // let newPosts = this.state.posts.filter((item) => item.id != id);
         // console.log(newPosts);
         // this.setState({ posts: newPosts });
-    }
+    };
 
     render() {
         const posts = this.state.posts.map((post) => {
@@ -61,7 +61,7 @@ class Posts extends Component {
                 <section className="Posts-FullPost">
                     <FullPost
                         id={this.state.selectedPostId}
-                        deleted={this.deletePostHandler}
+                        delete={this.deletePostHandler}
                     />
                 </section>
             </div>

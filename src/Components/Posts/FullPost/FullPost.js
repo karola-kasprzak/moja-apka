@@ -42,9 +42,7 @@ class FullPost extends Component {
                     </p>
                     <div className="Edit">
                         <button
-                            onClick={this.props.delete(
-                                this.state.loadedPost.id
-                            )}
+                            onClick={() => this.props.delete(this.props.id)}
                             className="Delete"
                         >
                             Delete
