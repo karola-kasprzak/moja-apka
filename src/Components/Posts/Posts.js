@@ -6,10 +6,20 @@ import Post from "./Post/Post";
 import FullPost from "./FullPost/FullPost";
 
 class Posts extends Component {
-    state = {
-        posts: [],
-        selectedPostId: null,
-    };
+    //upewnic sie ze dziala
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts: [],
+            selectedPostId: null,
+        };
+    }
+
+    //co ja tu w ogole mialam??
+    // state = {
+    //     posts: [],
+    //     selectedPostId: null,
+    // };
 
     componentDidMount() {
         axios
