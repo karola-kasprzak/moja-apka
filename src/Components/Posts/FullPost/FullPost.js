@@ -6,6 +6,7 @@ import "./FullPost.css";
 class FullPost extends Component {
     state = {
         loadedPost: null,
+        deleted: false,
     };
 
     componentDidUpdate() {
@@ -26,12 +27,24 @@ class FullPost extends Component {
         }
     }
 
+    handleDelete = () => {
+        this.props.delete(this.props.id);
+        this.setState({
+            deleted: true,
+        });
+    };
+
     render() {
         let post = <p className="FullPost">Select a post</p>;
 
         if (this.props.id) {
             post = <p className="FullPost">Loading...</p>;
         }
+
+        if (this.state.deleted) {
+            post = <p className="FullPost">[Post deleted]</p>;
+        }
+
         if (this.state.loadedPost) {
             post = (
                 <div className="FullPost">
@@ -41,10 +54,7 @@ class FullPost extends Component {
                         User ID: {this.state.loadedPost.userId}
                     </p>
                     <div className="Edit">
-                        <button
-                            onClick={() => this.props.delete(this.props.id)}
-                            className="Delete"
-                        >
+                        <button onClick={this.handleDelete} className="Delete">
                             Delete
                         </button>
                     </div>
