@@ -6,8 +6,8 @@ class Crypto extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cryptoData: {},
-            currencyList: [],
+            cryptoData: null,
+            currencyList: null,
             staticCurrencyList: [
                 "USD",
                 "AUD",
@@ -37,26 +37,23 @@ class Crypto extends Component {
     }
 
     getCrypto = () => {
-        return (
-            axios
-                .get("https://blockchain.info/pl/ticker")
-                // .then(response => response.json())
-                .then((response) => {
-                    this.setState({
-                        cryptoData: response.data,
-                        currencyList: Object.keys(response.data),
-                    });
-                })
-                .catch((err) => console.log(err))
-        );
+        return axios
+            .get("https://blockchain.info/pl/ticker")
+            .then((response) => {
+                this.setState({
+                    cryptoData: response.data,
+                    currencyList: Object.keys(response.data),
+                });
+            })
+            .catch((err) => console.log(err))
+            .then(console.log(this.state.cryptoData));
     };
 
     componentDidMount() {
         // Call this function so that it fetch first time right after mounting the component
         this.getCrypto();
-        console.log(this.state.cryptoData.AUS);
         // set Interval
-        this.interval = setInterval(this.getCrypto, 50000);
+        this.interval = setInterval(this.getCrypto, 5000);
     }
 
     componentWillUnmount() {
@@ -65,33 +62,22 @@ class Crypto extends Component {
     }
 
     render() {
-        const currencyList = this.state.staticCurrencyList;
-        console.log(currencyList);
+        const currencyList =
+            this.state.currencyList === null
+                ? this.state.staticCurrencyList
+                : this.state.currencyList;
 
-        // currencyList === undefined ? console.log("undefined") : null;
-
-        // console.log(
-        //     "🚀 ~ file: Crypto.js ~ line 42 ~ Crypto ~ render ~ currencyList",
-        //     currencyList
-        // );
-
-        // const test = typeof this.state.cryptoData.USD;
-        // console.log(
-        //     "🚀 ~ file: Crypto.js ~ line 48 ~ Crypto ~ render ~ test",
-        //     test
-        // );
-
-        // console.log(this.state.currencyList);
         return (
             <div>
-                <p>Crypto</p>
-                <p>{currencyList.join(" ")}</p>
-                <CryptoList currency="PL" buy="23.11" sell="24.12" />
+                <p>All currencies: {currencyList.join(" ")}</p>
+                {/* <CryptoList currency="TEST" buy="0" sell="0" /> */}
 
-                {currencyList.map((item) => (
+                {currencyList.map((item, index) => (
                     <CryptoList
+                        key={index}
                         currency={item}
-                        buy={"this.state.cryptoData.item.buy"}
+                        // nie dziala poprawnie
+                        // buy={this.state.cryptoData.item.buy}
                         // sell={this.state.cryptoData.item.sell}
                     />
                 ))}
