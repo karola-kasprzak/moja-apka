@@ -1,0 +1,40 @@
+
+.CryptoList-Container {
+  border: 2px solid #003399;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px #ccc;
+  margin: 24px auto;
+  padding: 12px;
+  width: 70vw
+}
+
+.CryptoList-List {
+  
+}
+
+.CryptoList-ListItem {
+  border: 1px solid #0066FF;
+  border-radius: 6px;
+  margin: 12px auto;
+  padding: 6px;
+  width: 60%;
+}
+
+.CryptoList-ListItem span {
+  padding: 0 12px;
+}
+
+.CurrencyList-Container {
+
+padding: 12px 52px;
+
+}
+
+.ShowAll-Btn {
+  background-color:  #FF9900;
+  border-color:  #FF9900;
+}
+
+.ShowAll-Btn:hover {
+  background-color: #CC7A00;
+}

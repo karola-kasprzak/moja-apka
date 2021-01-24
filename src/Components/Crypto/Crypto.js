@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import CryptoList from "./CryptoList/CryptoList";
 
+import "./Crypto.css";
+
 class Crypto extends Component {
     constructor(props) {
         super(props);
         this.state = {
             cryptoData: [],
             currencyList: [],
-            staticCurrencyList: [],
         };
     }
 
@@ -54,12 +55,19 @@ class Crypto extends Component {
     }
 
     render() {
-        const currencyList = this.state.currencyList.join(" ");
+        //idea: use buttons as a filter system
+        const currencyList = this.state.currencyList.map((item) => {
+            return <button key={item}>{item}</button>;
+        });
 
         return (
             <div>
                 <h1>BitCoin Rates</h1>
-                <p>Tracked currencies: {currencyList}</p>
+                <p className="CurrencyList-Container CryptoList-Container">
+                    <button className="ShowAll-Btn">Show All</button>
+                    {currencyList}
+                </p>
+
                 <CryptoList rates={this.state.cryptoData} />
             </div>
         );

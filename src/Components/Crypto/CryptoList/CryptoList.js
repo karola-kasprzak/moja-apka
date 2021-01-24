@@ -4,7 +4,9 @@ function CryptoRate(props) {
     let cryptoList = props.rates.map((crypto) => {
         return (
             <p key={crypto.currency} className="CryptoList-ListItem">
-                {crypto.currency} Buy: {crypto.buy} Sell: {crypto.sell}
+                <span>{crypto.currency}</span>
+                <span>Buy: {crypto.buy}</span>
+                <span>Sell: {crypto.sell}</span>
             </p>
         );
     });
