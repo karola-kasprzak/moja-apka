@@ -4,10 +4,13 @@ import axios from "axios";
 import "./FullPost.css";
 
 class FullPost extends Component {
-    state = {
-        loadedPost: null,
-        deleted: false,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            postID: null,
+            loadedPost: null,
+        };
+    }
 
     componentDidUpdate() {
         if (this.props.id) {
@@ -21,31 +24,24 @@ class FullPost extends Component {
                         `https://jsonplaceholder.typicode.com/posts/${this.props.id}`
                     )
                     .then((response) => {
-                        this.setState({ loadedPost: response.data });
+                        this.setState({
+                            postID: this.props.id,
+                            loadedPost: response.data,
+                        });
                     });
             }
         }
     }
 
     handleDelete = () => {
-        this.props.delete(this.props.id);
-        this.setState({
-            deleted: true,
-        });
+        this.props.delete(this.state.postID);
+        this.setState({ postID: null });
     };
 
     render() {
         let post = <p className="FullPost">Select a post</p>;
 
-        if (this.props.id) {
-            post = <p className="FullPost">Loading...</p>;
-        }
-
-        if (this.state.deleted) {
-            post = <p className="FullPost">[Post deleted]</p>;
-        }
-
-        if (this.state.loadedPost) {
+        if (this.state.postID) {
             post = (
                 <div className="FullPost">
                     <h1>{this.state.loadedPost.title}</h1>
@@ -53,14 +49,14 @@ class FullPost extends Component {
                     <p className="Author">
                         User ID: {this.state.loadedPost.userId}
                     </p>
-                    <div className="Edit">
-                        <button onClick={this.handleDelete} className="Delete">
-                            Delete
-                        </button>
-                    </div>
+
+                    <button onClick={this.handleDelete} className="Delete">
+                        Delete
+                    </button>
                 </div>
             );
         }
+
         return post;
     }
 }
