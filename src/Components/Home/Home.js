@@ -19,12 +19,6 @@ function Home() {
             : setFilterColor(filterColorPalette[currentFilterIndex + 1]);
     };
 
-    // const action = () => {
-    //     // setAnimation(" slide-out");
-    //     changeFilterColor;
-    //     setAnimation(" fade-in");
-    // };
-
     return (
         <div className={"HomeContainer " + filterColor + animation}>
             <article className="Home-article">

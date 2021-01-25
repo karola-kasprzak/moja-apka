@@ -6,7 +6,6 @@ import Post from "./Post/Post";
 import FullPost from "./FullPost/FullPost";
 
 class Posts extends Component {
-    //upewnic sie ze dziala
     constructor(props) {
         super(props);
         this.state = {
@@ -14,12 +13,6 @@ class Posts extends Component {
             selectedPostId: null,
         };
     }
-
-    //co ja tu w ogole mialam??
-    // state = {
-    //     posts: [],
-    //     selectedPostId: null,
-    // };
 
     componentDidMount() {
         axios

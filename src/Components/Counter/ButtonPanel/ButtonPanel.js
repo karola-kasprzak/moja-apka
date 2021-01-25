@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ButtonPanel.css";
 
 class ButtonPanel extends Component {
     resetOrReinitCounter = (reset) => {
