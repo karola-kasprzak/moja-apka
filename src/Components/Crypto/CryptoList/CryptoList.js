@@ -2,35 +2,12 @@ import React from "react";
 
 function CryptoRate(props) {
     const cryptoFilter = props.filter;
-    const cryptoRates = [...props.rates];
-    // console.log(cryptoFilter, cryptoRates);
+    const cryptoRates = props.rates;
+    let cryptoList = [];
 
-    const crypto =
-        cryptoFilter.length > 0
-            ? `filter ${cryptoFilter}`
-            : "show all:" + cryptoRates;
-    // console.log(crypto);
+    // cryptoList = cryptoFilter.length > 0 ? apply filter : props.rates;
 
-    // let test = cryptoRates.findIndex((crypto) => {
-    //     return crypto.currency === "EUR";
-    // });
-    // console.log(test);
-
-    // const test3 = cryptoRates.filter((crypto) => crypto.currency === "PLN");
-    // console.log(
-    //     "🚀 ~ file: CryptoList.js ~ line 20 ~ CryptoRate ~ test3",
-    //     test3
-    // );
-
-    let test = [];
-    for (let i = 0; i < cryptoFilter.length; i++) {
-        test.push(
-            cryptoRates.filter((crypto) => crypto.currency === cryptoFilter[i])
-        );
-    }
-    console.log(test.flat());
-
-    let cryptoList = props.rates.map((crypto) => {
+    cryptoList = cryptoRates.map((crypto) => {
         return (
             <p key={crypto.currency} className="CryptoList-ListItem">
                 <span>{crypto.currency}</span>
