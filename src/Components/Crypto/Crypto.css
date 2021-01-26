@@ -41,5 +41,6 @@ padding: 12px 52px;
 
 .FilterActive {
   background-color: lightblue;
-  color: red
+  color: #003399;
+  font-weight: bold;
 }

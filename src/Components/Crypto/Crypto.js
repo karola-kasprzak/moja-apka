@@ -16,32 +16,30 @@ class Crypto extends Component {
     }
 
     getCrypto = () => {
-        return (
-            axios
-                .get("https://blockchain.info/pl/ticker")
-                .then((response) => {
-                    const cryptoRes = response.data;
-                    let cryptoArr = [];
+        return axios
+            .get("https://blockchain.info/pl/ticker")
+            .then((response) => {
+                const cryptoRes = response.data;
+                let cryptoArr = [];
 
-                    cryptoArr = Object.keys(cryptoRes).map((key) => {
-                        return {
-                            currency: key,
-                            buy: cryptoRes[key].buy,
-                            sell: cryptoRes[key].sell,
-                            symbol: cryptoRes[key].symbol,
-                            lastRate: cryptoRes[key].last,
-                        };
-                    });
-                    // console.log(cryptoArr);
+                cryptoArr = Object.keys(cryptoRes).map((key) => {
+                    return {
+                        currency: key,
+                        buy: cryptoRes[key].buy,
+                        sell: cryptoRes[key].sell,
+                        symbol: cryptoRes[key].symbol,
+                        lastRate: cryptoRes[key].last,
+                    };
+                });
+                // console.log(cryptoArr);
 
-                    this.setState({
-                        cryptoData: cryptoArr,
-                        currencyList: Object.keys(cryptoRes),
-                    });
-                })
-                // .catch((err) => console.log(`Error: ${err}`))
-                .then(console.log(this.state.cryptoData))
-        );
+                this.setState({
+                    cryptoData: cryptoArr,
+                    currencyList: Object.keys(cryptoRes),
+                });
+            });
+        // .catch((err) => console.log(`Error: ${err}`))
+        // .then(console.log(this.state.cryptoData))
     };
 
     componentDidMount() {
@@ -83,7 +81,7 @@ class Crypto extends Component {
     };
 
     render() {
-        //idea: use buttons as a filter system
+        //Generating buttons for filtering
         const currencyList = this.state.currencyList.map((item) => {
             return (
                 <button
@@ -98,11 +96,11 @@ class Crypto extends Component {
 
         //cryptoRates will be the props passed to CryptoList
         //filterArr is non-empty ? cryptoData is filtered : cryptoData passed in full
-        const cryptoRates =
-            this.state.filterKeys.length > 0
-                ? `filter ${this.state.filterKeys}`
-                : "show all";
-        console.log(cryptoRates);
+        // const cryptoRates =
+        //     this.state.filterKeys.length > 0
+        //         ? `filter ${this.state.filterKeys}`
+        //         : "show all";
+        // console.log(cryptoRates);
 
         return (
             <div>
@@ -114,7 +112,10 @@ class Crypto extends Component {
                     {currencyList}
                 </p>
 
-                <CryptoList rates={this.state.cryptoData} />
+                <CryptoList
+                    filter={this.state.filterKeys}
+                    rates={this.state.cryptoData}
+                />
             </div>
         );
     }
