@@ -3,6 +3,7 @@ import axios from "axios";
 import CryptoList from "./CryptoList/CryptoList";
 
 import "./Crypto.css";
+import { BottomNavigation } from "@material-ui/core";
 
 class Crypto extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class Crypto extends Component {
         this.state = {
             cryptoData: [],
             currencyList: [],
+            filterKeys: [],
         };
     }
 
@@ -54,17 +56,61 @@ class Crypto extends Component {
         clearInterval(this.interval);
     }
 
+    addToFilter = (key) => {
+        //push item to filter arr
+        let newFilerArr = this.state.filterKeys;
+        newFilerArr.push(key);
+        this.setState({
+            filterKeys: newFilerArr,
+        });
+
+        //add css styling
+        const btnKey = document.getElementById(key);
+        btnKey.className = "FilterActive";
+    };
+
+    clearFilter = () => {
+        //clear filter arr
+        this.setState({
+            filterKeys: [],
+        });
+
+        //remove css styling
+        const selectedBtns = [].slice.call(
+            document.getElementsByClassName("FilterActive")
+        );
+        selectedBtns.forEach((btn) => btn.classList.remove("FilterActive"));
+    };
+
     render() {
         //idea: use buttons as a filter system
         const currencyList = this.state.currencyList.map((item) => {
-            return <button key={item}>{item}</button>;
+            return (
+                <button
+                    id={item}
+                    key={item}
+                    onClick={() => this.addToFilter(item)}
+                >
+                    {item}
+                </button>
+            );
         });
+
+        //cryptoRates will be the props passed to CryptoList
+        //filterArr is non-empty ? cryptoData is filtered : cryptoData passed in full
+        const cryptoRates =
+            this.state.filterKeys.length > 0
+                ? `filter ${this.state.filterKeys}`
+                : "show all";
+        console.log(cryptoRates);
 
         return (
             <div>
                 <h1>BitCoin Rates</h1>
                 <p className="CurrencyList-Container CryptoList-Container">
-                    <button className="ShowAll-Btn">Show All</button>
+                    <button className="ShowAll-Btn" onClick={this.clearFilter}>
+                        Show All
+                    </button>
                     {currencyList}
                 </p>
 

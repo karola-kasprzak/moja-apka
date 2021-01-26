@@ -38,3 +38,8 @@ padding: 12px 52px;
 .ShowAll-Btn:hover {
   background-color: #CC7A00;
 }
+
+.FilterActive {
+  background-color: lightblue;
+  color: red
+}
