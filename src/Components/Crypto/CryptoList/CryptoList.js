@@ -3,11 +3,20 @@ import React from "react";
 function CryptoRate(props) {
     const cryptoFilter = props.filter;
     const cryptoRates = props.rates;
-    let cryptoList = [];
+    let filteredArray = [];
 
-    // cryptoList = cryptoFilter.length > 0 ? apply filter : props.rates;
+    if (cryptoFilter.length > 0) {
+        for (let i = 0; i < cryptoFilter.length; i++) {
+            filteredArray.push(
+                cryptoRates.filter((obj) => obj.currency === cryptoFilter[i])
+            );
+        }
+        filteredArray = filteredArray.reduce((a, b) => a.concat(b), []);
+    } else {
+        filteredArray = cryptoRates;
+    }
 
-    cryptoList = cryptoRates.map((crypto) => {
+    const cryptoList = filteredArray.map((crypto) => {
         return (
             <p key={crypto.currency} className="CryptoList-ListItem">
                 <span>{crypto.currency}</span>
