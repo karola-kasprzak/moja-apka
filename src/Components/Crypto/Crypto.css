@@ -25,9 +25,7 @@
 }
 
 .CurrencyList-Container {
-
 padding: 12px 52px;
-
 }
 
 .ShowAll-Btn {
@@ -36,11 +34,26 @@ padding: 12px 52px;
 }
 
 .ShowAll-Btn:hover {
-  background-color: #CC7A00;
+  background-color: #ff99009f;
+  border-color: #FF9900;
 }
 
 .FilterActive {
-  background-color: lightblue;
+  background-color: white;
+  border-color: #003399;
   color: #003399;
   font-weight: bold;
+}
+
+.FilterActive:focus {
+  border-color: #003399;
+  outline:none;
+}
+
+.FilterActive:hover {
+  color: white;
+}
+
+button:focus {
+  outline: none
 }
